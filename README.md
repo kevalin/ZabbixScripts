@@ -5,7 +5,7 @@ write more scripts for zabbix
 
   check the local mysql-slave-status that is based on discovery-function of zabbix.
   
-* ### check_h700_status.py ###
+* #### check_h700_status.py ####
 
   check disk raid status omnibearingly for zabbix
   

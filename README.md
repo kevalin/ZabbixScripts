@@ -10,10 +10,16 @@ write more scripts for zabbix
   check disk raid status omnibearingly for zabbix
   
     ```bash
-    $./check_h700_status.py 'Media Error' #checking all disk that have Media Error
-    $./check_h700_status.py 'Other Error' #checking all disk that have Other Error
-    $./check_h700_status.py 'Predictive Failure' #checking all disk that have Predictive Failure
-    $./check_h700_status.py 'State' #checking raid state
-    $./check_h700_status.py 'Sum Error' #checking all disk that have sum Errors
-    $./check_h700_status.py 'BBU' #checking WR or WT status of raid
+    # 检测是否都多块磁盘同时存在Media Error
+    $./check_h700_status.py 'Media Error'
+    # 检测是否有多块磁盘同时存在Other Error
+    $./check_h700_status.py 'Other Error'
+    # 检测是否有磁盘存在Predictive Failure
+    $./check_h700_status.py 'Predictive Failure'
+    # 检测Raid状态
+    $./check_h700_status.py 'State'
+    # 检测所以磁盘存在的Error
+    $./check_h700_status.py 'Sum Error'
+    # 检测磁盘Cache是否为WB还是WT
+    $./check_h700_status.py 'BBU'
     ```

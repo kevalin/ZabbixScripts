@@ -28,6 +28,7 @@ def getH700Status():
         i = i + 5
         
     infos['Disk'] = disk
+    # 返回一个dict
     return infos
 
 def printMediaError(obj):

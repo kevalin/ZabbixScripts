@@ -103,7 +103,7 @@ if __name__ == '__main__':
         printState(obj)
     elif (sys.argv[1] == 'Sum Error'):
         printSumError(obj)
-    elif (sys.argv[1] == 'BBU'):
+    elif (sys.argv[1] == 'Cache'):
         printBBU(obj)
     else:
-        print "Usage: check_h700_status.py 'Media Error'|'Other Error'|'Predictive Failure'|'State'|'Sum Error'|'BBU'"
+        print "Usage: check_h700_status.py 'Media Error'|'Other Error'|'Predictive Failure'|'State'|'Sum Error'|'Cache'"

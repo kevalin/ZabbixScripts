@@ -59,7 +59,7 @@ def printPredictiveFailure(obj):
             tempObj2[i['Slot Number']] = i['Predictive Failure Count']
             pStr.append(tempObj2)
     if len(pStr) > 0:
-        print 'Code:1 Info:有%d块磁盘存在Predictive Failure'%(len(pStr))
+        print 'Code:1 Info:有%d块磁盘存在Predictive Failure %s'%(len(pStr), pStr)
     else:
         print 'Code:0 Info:没有磁盘存在Predictive Failure'
 

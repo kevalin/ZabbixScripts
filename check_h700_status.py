@@ -105,4 +105,4 @@ if __name__ == '__main__':
     elif (sys.argv[1] == 'BBU'):
         printBBU(obj)
     else:
-        print 'Usage: check_h700_status.py "Media Error"|"Other Error"|"Predictive Failure"|"State"|"Sum Error"'
+        print "Usage check_h700_status.py 'Media Error'|'Other Error'|'Predictive Failure'|'State'|'Sum Error'|'BBU'"

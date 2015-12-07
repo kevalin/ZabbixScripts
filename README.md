@@ -21,5 +21,5 @@ write more scripts for zabbix
     # 检测所有磁盘存在的Error总数
     $./check_h700_status.py 'Sum Error'
     # 检测磁盘Cache是否为WB还是WT
-    $./check_h700_status.py 'BBU'
+    $./check_h700_status.py 'Cache'
     ```

@@ -23,3 +23,7 @@ write more scripts for zabbix
     # 检测磁盘Cache是否为WB还是WT
     $./check_h700_status.py 'Cache'
     ```
+
+* #### check_net_status.py ####
+
+  Use simple_check and discovery of zabbix to check network status from IP1 to IP2.

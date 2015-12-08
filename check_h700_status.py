@@ -93,17 +93,17 @@ def printBBU(obj):
 if __name__ == '__main__':
     obj = getH700Status()
    
-    if (sys.argv[1] == 'Media Error'):
+    if sys.argv[1] == 'Media Error':
         printMediaError(obj)
-    elif (sys.argv[1] == 'Other Error'):
+    elif sys.argv[1] == 'Other Error':
         printOtherError(obj)
-    elif (sys.argv[1] == 'Predictive Failure'):
+    elif sys.argv[1] == 'Predictive Failure':
         printPredictiveFailure(obj)
-    elif (sys.argv[1] == 'State'):
+    elif sys.argv[1] == 'State':
         printState(obj)
-    elif (sys.argv[1] == 'Sum Error'):
+    elif sys.argv[1] == 'Sum Error':
         printSumError(obj)
-    elif (sys.argv[1] == 'Cache'):
+    elif sys.argv[1] == 'Cache':
         printBBU(obj)
     else:
         print "Usage: check_h700_status.py 'Media Error'|'Other Error'|'Predictive Failure'|'State'|'Sum Error'|'Cache'"

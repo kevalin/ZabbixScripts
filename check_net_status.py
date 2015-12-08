@@ -12,4 +12,5 @@ for line in f:
     infos.append(tempObj)
 
 dictIp["data"] = infos
+f.close()
 print json.dumps(dictIp, sort_keys=True, indent=4)

@@ -7,7 +7,7 @@ write more scripts for zabbix
   
 * #### check_h700_status.py ####
 
-  check disk raid status omnibearingly for zabbix
+  check disk and raid status omnibearingly for zabbix
   
     ```bash
     # 检测是否都多块磁盘同时存在Media Error

@@ -3,11 +3,11 @@ write more scripts for zabbix
 
 * #### check_mysql_slave.py ####
 
-  check the local mysql-slave-status that is based on discovery-function of zabbix.
+  使用zabbix discovery自动发现mysql端口完成同步状态（Binlog延迟和slave running2个方面）的监控。
   
 * #### check_h700_status.py ####
 
-  check disk and raid status omnibearingly for zabbix
+  使用MegaCli从6个方面检测H700 Raid卡磁盘状态。
   
     ```bash
     # 检测是否都多块磁盘同时存在Media Error
@@ -26,7 +26,7 @@ write more scripts for zabbix
 
 * #### check_net_status.py ####
 
-  Use simple_check and discovery of zabbix to check network status from IP1 to IP2.
+  脚本的主要目的是读取一个IP配置文件，然后输出JSON格式，再通过discovery完成对这些IP的连通性，丢包率，延迟监控。
 
 * #### install_zabbix_agentd_for_centos.sh ####
 

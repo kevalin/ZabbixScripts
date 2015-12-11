@@ -27,3 +27,7 @@ write more scripts for zabbix
 * #### check_net_status.py ####
 
   Use simple_check and discovery of zabbix to check network status from IP1 to IP2.
+
+* #### install_zabbix_agentd_for_centos.sh ####
+
+  用于一键安装和配置zabbix_agentd

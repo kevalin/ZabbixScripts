@@ -110,7 +110,13 @@ function startZabbixAgentd() {
     log "Start zabbix_agentd"
 }
 
+printf "\033[32mINIT SYSTEM\033[0m\n"
+printf "\033[32m=====================================================\033[0m\n"
 initSys
+printf "\033[32mCONFIG ZABBIX_AGENTD\033[0m\n"
+printf "\033[32m=====================================================\033[0m\n"
 initZabbixSudoers
 configZabbix
+printf "\033[32mSTART ZABBIX_AGENTD\033[0m\n"
+printf "\033[32m=====================================================\033[0m\n"
 startZabbixAgentd

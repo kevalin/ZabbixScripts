@@ -30,4 +30,4 @@ write more scripts for zabbix
 
 * #### install_zabbix_agentd_for_centos.sh ####
 
-  之前的系统都是Debian，后来开始使用Centos，所以又写了一个用于一键安装和配置zabbix_agentd针对Centos的。
+  之前的系统都是Debian，后来开始使用Centos，所以又写了一个用于一键安装和配置zabbix_agentd针对Centos的脚本。

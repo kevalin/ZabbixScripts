@@ -69,6 +69,7 @@ write more scripts for zabbix
     icmppingsec[{#IP},10,1000,64,5000,avg]
     # 连通性，能ping通与否
     icmpping[{#IP},4,1000,64,10000]
+    ```  
 
 * #### install_zabbix_agentd_for_centos.sh ####
 

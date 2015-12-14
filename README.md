@@ -80,10 +80,13 @@ write more scripts for zabbix
   网上看过很多shell版本配置都比较多，个人喜欢少配置化，因此用python基于LLD和/proc/diskstats重写了之前的check_disk_io.sh。
   
     ```bash
+    # zabbix_agentd userparams配置 
     $ cat zabbix_agentd.conf.d/check_dev_io.conf
     UserParameter=dev.io.discovery,/usr/local/etc/scripts/check_dev_io.py discovery
     UserParameter=dev.io.status[*],/usr/local/etc/scripts/check_dev_io.py status $1 $2
-    $ ./check_dev_io.py discovery
+    
+    # zabbix_server调用
+    $ zabbix_get -s 192.168.10.100 -k dev.io.discovery
     {
         "data": [
             {
@@ -108,6 +111,6 @@ write more scripts for zabbix
             }
         ]
     }
-    $ ./check_dev_io.py status sdb5 read.ops
+    $ zabbix_get -s 192.168.10.100 -k dev.io.status[sdb5,read.ops]
     871
     ```

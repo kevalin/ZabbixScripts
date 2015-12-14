@@ -44,6 +44,31 @@ write more scripts for zabbix
 * #### check_net_status.py ####
 
   脚本的主要目的是读取一个IP配置文件，然后输出JSON格式，再通过discovery完成对这些IP的连通性，丢包率，延迟监控。
+  
+    ```bash
+    # zabbix_agentd userparams配置
+    $ cat zabbix_agentd.userparams.conf
+    UserParameter=my.net.discovery,/etc/zabbix/scripts/check_net_status.py
+    
+    $ ./check_net_status.py
+    {
+        "data": [
+            {
+                "{#IP}": "172.20.0.1"
+            }, 
+            {
+                "{#IP}": "172.18.0.253"
+            }
+        ]
+    }
+    
+    # 再使用simple_check完成监控
+    # 丢包率
+    icmppingloss[{#IP},10,1000,64,5000]
+    # response时间
+    icmppingsec[{#IP},10,1000,64,5000,avg]
+    # 连通性，能ping通与否
+    icmpping[{#IP},4,1000,64,10000]
 
 * #### install_zabbix_agentd_for_centos.sh ####
 

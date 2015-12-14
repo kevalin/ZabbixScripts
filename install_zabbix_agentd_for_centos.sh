@@ -6,6 +6,7 @@ LOCALIP=`ifconfig | grep '192.168.20.*' | cut -f 2 -d ":"|cut -f 1 -d " "`
 ZABBIXSERVER=192.168.20.12
 WGETHTTP='ftp://192.168.20.12/pub'
 
+# log函数用来判断上次执行结果正确与否
 function log() {
     if [ $? -eq 0 ]; then
         echo -e "$* \033[32m[ OK ]\033[0m"
@@ -85,6 +86,8 @@ function configZabbix() {
     touch ${DZABBIXDIR}/scripts/raid.log
     chmod 777 ${DZABBIXDIR}/scripts/raid.log
     mkdir -p ${DZABBIXDIR}/zabbix_agentd.conf.d
+    
+    # 修改zabbix_agentd的配置文件
     sed -i '81s/.*/Server='${ZABBIXSERVER}'/' ${DZABBIXDIR}/zabbix_agentd.conf
     log "Set Server=${ZABBIXSERVER}"
     sed -i '97s/.*/ListenIP='${LOCALIP}'/' ${DZABBIXDIR}/zabbix_agentd.conf
@@ -102,11 +105,14 @@ function configZabbix() {
     sed -i '255s/.*/UnsafeUserParameters=1/' ${DZABBIXDIR}/zabbix_agentd.conf
     log "Set UnsafeUserParameters=1"
 
+    # 从ftp服务器获取最新配置和脚本
     wget -P $DZABBIXDIR ${WGETHTTP}/zabbix/zabbix_agentd.userparams.conf -q
     log "Download zabbix_agentd.userparams.conf"
     wget -P $DZABBIXDIR/scripts ${WGETHTTP}/zabbix/scripts/* -q
     log "Download zabbix scripts"
-
+    wget -P $DZABBIXDIR/zabbix_agentd.conf.d ${WGETHTTP}/zabbix/zabbix_agentd.conf.d/* -q
+    log "Download zabbix zabbix_agentd.conf.d"
+    
     chmod +x $DZABBIXDIR/scripts/*
 }
 

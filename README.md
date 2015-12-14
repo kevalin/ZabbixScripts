@@ -28,7 +28,7 @@ write more scripts for zabbix
   使用过程中发现有多个Virtual Drive存在的问题，因此在上一个版本上做了改进。
   
     ```bash
-    # userparams配置
+    # zabbix_agentd userparams配置
     $ cat zabbix_agentd.userparams.conf
     UserParameter=raid.h700[*],/usr/local/etc/scripts/check_h700_status_plus.py $1
     

@@ -43,7 +43,7 @@ write more scripts for zabbix
   
 * #### check_net_status.py ####
 
-  脚本的主要目的是读取一个IP配置文件，然后输出JSON格式，再通过discovery完成对这些IP的连通性，丢包率，延迟监控。
+  脚本的主要目的是读取一个IP配置文件，然后输出JSON，再通过discovery完成对这些IP的连通性，丢包率，延迟监控。
   
     ```bash
     # zabbix_agentd userparams配置

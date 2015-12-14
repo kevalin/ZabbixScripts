@@ -74,3 +74,40 @@ write more scripts for zabbix
 * #### install_zabbix_agentd_for_centos.sh ####
 
   之前的系统都是Debian，后来开始使用Centos，所以又写了一个用于一键安装和配置zabbix_agentd针对Centos的脚本。
+
+* #### check_dev_io.py ####
+
+  网上看过很多shell版本配置都比较多，个人喜欢少配置化，因此用python基于LLD和/proc/diskstats重写了之前的check_disk_io.sh。
+  
+    ```bash
+    $ cat zabbix_agentd.conf.d/check_dev_io.conf
+    UserParameter=dev.io.discovery,/usr/local/etc/scripts/check_dev_io.py discovery
+    UserParameter=dev.io.status[*],/usr/local/etc/scripts/check_dev_io.py status $1 $2
+    $ ./check_dev_io.py discovery
+    {
+        "data": [
+            {
+                "{#DEVNAME}": "sdb2", 
+                "{#MOUNTNAME}": "/"
+            }, 
+            {
+                "{#DEVNAME}": "sdb1", 
+                "{#MOUNTNAME}": "/boot"
+            }, 
+            {
+                "{#DEVNAME}": "sdb3", 
+                "{#MOUNTNAME}": "/home"
+            }, 
+            {
+                "{#DEVNAME}": "sda1", 
+                "{#MOUNTNAME}": "/opt"
+            }, 
+            {
+                "{#DEVNAME}": "sdb5", 
+                "{#MOUNTNAME}": "/var"
+            }
+        ]
+    }
+    $ ./check_dev_io.py status sdb5 read.ops
+    871
+    ```

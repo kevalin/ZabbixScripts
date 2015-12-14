@@ -3,8 +3,48 @@ write more scripts for zabbix
 
 * #### check_mysql_slave.py ####
 
-  使用zabbix discovery自动发现mysql端口完成同步状态（Binlog延迟和slave running2个方面）的监控。
+  使用zabbix LLD发现mysql端口完成同步状态（Binlog延迟和slave running2个方面）的监控。
   
+    ```bash
+    # zabbix_agentd userparams配置
+    $ cat zabbix_agentd.conf.d/check_mysql_slave.conf 
+    UserParameter=mysql.ports.discovery,sudo /usr/local/etc/scripts/check_mysql_slave.py
+    UserParameter=mysql.slave.status[*],sudo /usr/local/etc/scripts/check_mysql_slave.py $1
+    
+    # zabbix_server调用
+    $ zabbix_get -s 192.168.10.100 -k mysql.ports.discovery
+    {
+        "data": [
+            {
+                "{#MYSQL_PORT}": "3310"
+            }, 
+            {
+                "{#MYSQL_PORT}": "3312"
+            }, 
+            {
+                "{#MYSQL_PORT}": "3317"
+            }, 
+            {
+                "{#MYSQL_PORT}": "3318"
+            }, 
+            {
+                "{#MYSQL_PORT}": "3319"
+            }, 
+            {
+                "{#MYSQL_PORT}": "3320"
+            }, 
+            {
+                "{#MYSQL_PORT}": "3321"
+            }, 
+            {
+                "{#MYSQL_PORT}": "3322"
+            }
+        ]
+    }
+    $ zabbix_get -s 192.168.10.100 -k mysql.slave.status[3322]
+    {'Log_File': 'normal', 'Slave_Running': 'Yes'}
+    ```
+    
 * #### check_h700_status.py ####
 
   使用MegaCli从6个方面检测H700 Raid卡磁盘状态。

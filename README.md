@@ -23,7 +23,24 @@ write more scripts for zabbix
     # 检测磁盘Cache是否为WB还是WT
     $./check_h700_status.py 'Cache'
     ```
+* #### check_h700_status_plus.py ####
 
+  使用过程中发现有多个Virtual Drive存在的问题，因此在上一个版本上做了改进。
+  
+    ```bash
+    # userparams配置
+    $ cat zabbix_agentd.userparams.conf
+    UserParameter=raid.h700[*],/usr/local/etc/scripts/check_h700_status_plus.py $1
+    
+    # zabbix_server调用
+    $ zabbix_get -s 192.168.10.100 -k raid.h700['State']
+    Virtual Drive:0 Code:0 Info:Optimal
+    Virtual Drive:1 Code:0 Info:Optimal
+    $ zabbix_get -s 192.168.10.100 -k raid.h700['Cache']
+    Virtual Drive:0 Code:0 Info:WriteBack
+    Virtual Drive:1 Code:0 Info:WriteBack
+    ```
+  
 * #### check_net_status.py ####
 
   脚本的主要目的是读取一个IP配置文件，然后输出JSON格式，再通过discovery完成对这些IP的连通性，丢包率，延迟监控。

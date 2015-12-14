@@ -84,7 +84,7 @@ def printSumError(obj):
             errSum += int(i['Other Error Count'])
     print errSum
 
-def printBBU(obj):
+def printCache(obj):
     if obj['Current Cache Policy'] != 'WriteBack':
         print 'Code:1 Info:%s'%(obj['Current Cache Policy'])
     else:
@@ -104,6 +104,6 @@ if __name__ == '__main__':
     elif sys.argv[1] == 'Sum Error':
         printSumError(obj)
     elif sys.argv[1] == 'Cache':
-        printBBU(obj)
+        printCache(obj)
     else:
         print "Usage: check_h700_status.py 'Media Error'|'Other Error'|'Predictive Failure'|'State'|'Sum Error'|'Cache'"

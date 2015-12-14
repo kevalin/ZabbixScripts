@@ -54,8 +54,14 @@ function initSys() {
 function initZabbixBin() {
     chmod +x ${SZABBIXDIR}/sbin/*
     chmod +x ${SZABBIXDIR}/bin/*
-    rm -f bin/sbin/zabbix_agentd
-    rm -f bin/sbin/zabbix_get
+    
+    if [ -f /usr/sbin/zabbix_agentd ]; then
+        rm -f /usr/sbin/zabbix_agentd
+    fi
+    if [ -f /usr/sbin/zabbix_get ]; then
+        rm -f /usr/sbin/zabbix_get
+    fi
+    
     ln -s ${SZABBIXDIR}/sbin/zabbix_agentd /usr/sbin/zabbix_agentd
     ln -s ${SZABBIXDIR}/bin/zabbix_get /usr/sbin/zabbix_get
 }

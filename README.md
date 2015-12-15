@@ -117,7 +117,7 @@ write more scripts for zabbix
 
 * #### check_dev_io.py ####
 
-  网上看过很多shell版本配置都比较多，个人喜欢少配置化，因此用python基于LLD和/proc/diskstats重写了之前的check_disk_io.sh。
+  网上看过很多shell版本配置都比较多，个人喜欢少配置化，因此用python基于LLD和/proc/diskstats重写了之前的check_disk_io.sh。```注意```新建模板的时候```Store value```一点要选择```speed per second```。
   
     ```bash
     # zabbix_agentd userparams配置 

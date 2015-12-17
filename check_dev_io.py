@@ -23,24 +23,31 @@ def getDevInfo():
     
 def getIoStatus(devName, item):
     if item == 'read.ops':
+        # 读磁盘的次数，成功完成读的总次数
         cmdString = "cat /proc/diskstats | grep " + devName + " | head -1 | awk '{print $4}'"
         print commands.getoutput(cmdString)
     elif item == 'write.ops':
+        # 写完成的次数，成功写完成的总次数
         cmdString = "cat /proc/diskstats | grep " + devName + " | head -1 | awk '{print $8}'"
         print commands.getoutput(cmdString)
     elif item == 'read.ms':
+        # 读花费的毫秒数，这是所有读操作所花费的毫秒数
         cmdString = "cat /proc/diskstats | grep " + devName + " | head -1 | awk '{print $7}'"
         print commands.getoutput(cmdString)
     elif item == 'write.ms':
+        # 写花费的毫秒数，这是所有写操作所花费的毫秒数
         cmdString = "cat /proc/diskstats | grep " + devName + " | head -1 | awk '{print $11}'"
         print commands.getoutput(cmdString)
     elif item == 'io.ms':
+        # 花在I/O操作上的毫秒数
         cmdString = "cat /proc/diskstats | grep " + devName + " | head -1 | awk '{print $13}'"
         print commands.getoutput(cmdString)
     elif item == 'read.sectors':
+        # 读扇区的次数，成功读过的扇区总次数
         cmdString = "cat /proc/diskstats | grep " + devName + " | head -1 | awk '{print $6}'"
         print commands.getoutput(cmdString)
     elif item == 'write.sectors':
+        # 写扇区的次数，成功写扇区总次数
         cmdString = "cat /proc/diskstats | grep " + devName + " | head -1 | awk '{print $10}'"
         print commands.getoutput(cmdString)
     else:

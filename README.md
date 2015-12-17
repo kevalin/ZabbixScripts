@@ -157,7 +157,7 @@ write more scripts for zabbix
     
   参数说明：
     
-    *read.ops：读磁盘的次数，成功完成读的总次数
+    * read.ops：读磁盘的次数，成功完成读的总次数
     * write.ops：写完成的次数，成功写完成的总次数
     * read.ms：读花费的毫秒数，这是所有读操作所花费的毫秒数
     * write.ms：写花费的毫秒数，这是所有写操作所花费的毫秒数

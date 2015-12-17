@@ -154,3 +154,13 @@ write more scripts for zabbix
     $ zabbix_get -s 192.168.10.100 -k dev.io.status[sdb5,read.ops]
     871
     ```
+    
+  参数说明：
+    
+    * read.ops：读磁盘的次数，成功完成读的总次数
+    * write.ops：写完成的次数，成功写完成的总次数
+    * read.ms：读花费的毫秒数，这是所有读操作所花费的毫秒数
+    * write.ms：写花费的毫秒数，这是所有写操作所花费的毫秒数
+    * io.ms：花在I/O操作上的毫秒数
+    * read.sectors：读扇区的次数，成功读过的扇区总次数
+    * write.sectors：写扇区的次数，成功写扇区总次数

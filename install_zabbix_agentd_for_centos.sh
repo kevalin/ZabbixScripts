@@ -68,13 +68,14 @@ function initZabbixBin() {
 }
 
 function initZabbixSudoers() {
-    if [ `grep 'zabbix  ALL=(ALL)' /etc/sudoers | wc -l` -eq 3 ]; then
+    if [ `grep 'zabbix  ALL=(ALL)' /etc/sudoers | wc -l` -eq 4 ]; then
         printf "\033[33msudoers已经添加zabbix\033[0m\n"
     else
         echo "Defaults:zabbix !requiretty" >> /etc/sudoers
         echo "zabbix  ALL=(ALL) NOPASSWD: /usr/sbin/MegaCli" >> /etc/sudoers
         echo "zabbix  ALL=(ALL) NOPASSWD: /usr/sbin/mpt-status" >> /etc/sudoers
         echo "zabbix  ALL=(ALL) NOPASSWD: /usr/sbin/sas2ircu" >> /etc/sudoers
+        echo "zabbix  ALL=(ALL) NOPASSWD: /usr/local/etc/scripts/check_mysql_slave.py" >> /etc/sudoers
         log "Add zabbix sudoers"
     fi
 }

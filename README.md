@@ -42,7 +42,7 @@ write more scripts for zabbix
         ]
     }
     $ zabbix_get -s 192.168.10.100 -k mysql.slave.status[3322]
-    {'Log_File': 'normal', 'Slave_Running': 'Yes'}
+    {'Log_File': 'normal', 'Slave_IO_Running': 'Yes', 'Slave_SQL_Running': 'Yes'}
     ```
     
 * #### check_h700_status.py ####

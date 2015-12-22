@@ -4,9 +4,9 @@
 import os, sys, json, commands
 
 class zabbixMysqlClass(object):
-    version = 0.1
+    version = 0.0.2
 
-    def __init__(self, host='127.0.0.1', user='root', password='123456'):
+    def __init__(self, host='127.0.0.1', user='monitoraccount', password='FC9BF8E98A'):
         self.host = host
         self.user = user
         self.password = password
@@ -50,10 +50,9 @@ class zabbixMysqlClass(object):
             result['Log_File'] = 'delay'
         else:
             result['Log_File'] = 'normal'
-        if a[2].split(':')[1] == 'Yes' and a[3].split(':')[1] == 'Yes':
-            result['Slave_Running'] = 'Yes'
-        else:
-            result['Slave_Running'] = 'No'
+        
+        result['Slave_IO_Running'] = a[2].split(':')[1]
+        result['Slave_SQL_Running'] = a[3].split(':')[1]
         print result
 
 if __name__ == '__main__':
@@ -63,7 +62,4 @@ if __name__ == '__main__':
     elif len(sys.argv) > 0 and len(sys.argv) < 2:
         myClass.port_discovery()
     else:
-        print 'Usage:\n\
-=====================================================\n\
-./check_mysql_slave.py          get mysql ports\n\
-./check_mysql_slave.py 3306     get 3306 slave status'
+        print 'ERROR:参数错误'
